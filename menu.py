@@ -152,47 +152,73 @@ def quit_game():
         # Bildschirmgröße ermitteln
         screen_size = screen.get_size()
 
-        # Video in passende Größe skalieren
-        clip_resized = clip.resize(newsize=screen_size)  # Skaliert das Video auf die Bildschirmgröße
+    # === GIF laden von Datei ===
+    def gif_aus_datei_laden(pfad):
+        return Image.open(pfad)
 
-        # Video-Frames durchlaufen und anzeigen
-        for frame in clip_resized.iter_frames(fps=24, dtype="uint8"):
-            # Wandle das Frame in ein Pygame Surface um
-            frame_surface = pygame.surfarray.make_surface(np.transpose(frame, (1, 0, 2)))
 
-            # Anzeige des Frames
-            screen.blit(frame_surface, (0, 0))
-            pygame.display.flip()
+    # === GIF in Pygame-kompatible Frames umwandeln ===
+    def gif_zu_pygame_frames(gif):
+        frames = []
+        try:
+            while True:
+                frame = gif.copy().convert("RGBA")
+                pygame_frame = pygame.image.fromstring(frame.tobytes(), frame.size, "RGBA")
+                frames.append(pygame_frame)
+                gif.seek(gif.tell() + 1)
+        except EOFError:
+            pass
+        return frames, gif.size
 
-            # Event-Loop zum Schließen des Fensters
-            for event in pygame.event.get():
-                if event.type == pygame.QUIT:
-                    pygame.quit()
-                    return
 
-    # Hauptprogramm
-    def main():
+    # === Hauptprogramm ===
+    def show_gif():
         pygame.init()
+        pygame.mixer.init()
 
-        # Bildschirm im Vollbildmodus öffnen
-        screen = pygame.display.set_mode((0, 0), pygame.FULLSCREEN)
-        pygame.display.set_caption("Vollbild Video")
+        # Sound laden
+        pust_sound = pygame.mixer.Sound("data/pusten.wav")
+        sound_channel = pygame.mixer.Channel(0)  # Dedizierter Kanal für den Sound
 
-        # Pfad zum Video (MP4)
-        video_pfad = "data/ezgif-8e3264382fd934.mp4"  # Passe den Pfad an
+        # GIF laden
+        gif = gif_aus_datei_laden("data/BIGGY.gif")
+        frames, (width, height) = gif_zu_pygame_frames(gif)
 
-        # Video im Vollbildmodus anzeigen
-        zeige_video_vollbild(screen, video_pfad)
+        # Vollbild-Modus aktivieren
+        screen = pygame.display.set_mode((width, height), pygame.FULLSCREEN)
+        pygame.display.set_caption("GIF mit Pustesound")
+        clock = pygame.time.Clock()
 
-        # Pygame beenden
+        # Animation starten
+        running = True
+        frame_index = 0
+        frame_delay = 100  # Millisekunden zwischen Frames
+        last_update = pygame.time.get_ticks()
+
+        # Sound starten, wenn die Animation beginnt
+        sound_channel.play(pust_sound, loops=-1)  # -1 für endlose Wiederholung
+
+        while running:
+            for event in pygame.event.get():
+                if event.type == pygame.QUIT or \
+                        (event.type == pygame.KEYDOWN and event.key == pygame.K_ESCAPE):
+                    running = False
+
+            now = pygame.time.get_ticks()
+            if now - last_update > frame_delay:
+                frame_index = (frame_index + 1) % len(frames)
+                last_update = now
+
+            screen.blit(frames[frame_index], (0, 0))
+            pygame.display.flip()
+            clock.tick(60)
+
+        # Aufräumen beim Beenden
+        sound_channel.stop()
         pygame.quit()
 
-    if __name__ == "__main__":
-        main()
-
+    show_gif()
     sys.exit()
-
-    """
 
 def print_main_menu():
     """Displays the menu options to the user."""
