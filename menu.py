@@ -1,92 +1,254 @@
-
+import pygame
 import sys
-#Beispiel
+import os
+import json
+import numpy as np
+import game_logic
 
-#HIER leaderboard
+# importieren der Funktionen aus leaderboard_utils
+from leaderboard_utils import load_leaderboard, save_leaderboard, update_leaderboard_if_high_score, reset_leaderboard_data
 
 
 
-def show_leaderboard(leaderboard): #Beispiel
+# Farben definieren
+GREEN = "\033[92m"
+RED = '\033[91m'
+RESET = "\033[0m"
+
+"""
+LEADERBOARD_FILE = "data/leaderboard.json"
+
+def load_leaderboard():
+    ### Loads the leaderboard from a JSON file. ###
+    if os.path.exists(LEADERBOARD_FILE):
+        with open(LEADERBOARD_FILE, "r") as f:
+            return json.load(f)
+    return {}
+
+def save_leaderboard(leaderboard):
+    ### Saves the leaderboard to a JSON file. ###
+    with open(LEADERBOARD_FILE, "w") as f:
+        json.dump(leaderboard, f, indent=4, sort_keys=True)
+"""
+
+def update_leaderboard_if_high_score(player_name, score):
+    ### Checks if the player's score is in the top 3 and updates the leaderboard file if needed. ### 
+
+
+    # Load current leaderboard
+    leaderboard = load_leaderboard()
+
+    # Combine with new score
+    all_scores = list(leaderboard.items()) + [(player_name, score)]
+
+    # Sort by score descending, then name
+    all_scores.sort(key=lambda x: (-x[1], x[0]))
+
+    # Keep top 5
+    new_top_three = dict(all_scores[:5])
+
+    # Save updated leaderboard
+    save_leaderboard(new_top_three)
+
+    print(f"{GREEN}Leaderboard has been updated!{RESET}")
+
+
+
+def play_music():
+    """Abspielt die Musik im Hintergrund."""
+    pygame.mixer.init()  # Initialisiere den Mixer
+    music_path = "/Users/andreweigel/Library/Mobile Documents/com~apple~CloudDocs/beyond_belief_game/music/xxx.wav"  # Pfad zur WAV-Datei
+    if os.path.exists(music_path):  # Überprüfen, ob die Datei existiert
+        pygame.mixer.music.load(music_path)  # Lade die WAV-Datei
+        pygame.mixer.music.play(-1)  # Spiele die Musik in einer Schleife
+    else:
+        print(f"{GREEN}Die Datei wurde nicht gefunden: {music_path}{RESET}")
+
+def clear_screen():
+    """Clears the screen"""
+    # Check if running on Windows terminal
+    if os.name == 'nt':
+        os.system('cls')
+    else:
+        # On Unix-like systems, try clear command first
+        if 'TERM' in os.environ:
+            os.system('clear')
+        else:
+            # PyCharm built-in console fallback: print many newlines
+            print("\n" * 100)
+
+
+def show_leaderboard():
     """Lists all players and their scores."""
+    leaderboard = load_leaderboard()
     leaderboard_list = list(leaderboard.items())
-    print("Leaderboard:")
+    print(f"{GREEN}Leaderboard:{RESET}")
     print()
     for player, score in leaderboard_list:
-        print(f"{player}: {score}")
+        print(f"{GREEN}{player}: {score}{RESET}")
 
 
-def new_game():
+def get_player_name():
+    """Asks the user for their name."""
+    # Input für den Spielernamen innerhalb eines grünen Rahmens
+    print(
+        f"{GREEN}╔═══════════════════════════════════════════════════════════════════════════════════════════════════════════════╗")
+    player_name = input(f"{GREEN}What is your name... as you step into the unknown?: {RESET}").strip()
+
+    print(
+        f"{GREEN}╠═══════════════════════════════════════════════════════════════════════════════════════════════════════════════╣")
+    return player_name
+
+
+def play_game():
     """Handles the new game flow."""
-    players = []
+    player_name = get_player_name()
+    print(
+        f"{GREEN}🕵️ Hello {player_name}, now we enter the game of truth and lies.\nTwo truths, one lie... "
+        f"but only one chance to uncover it.{RESET}")
+    print(f"{GREEN}╠═══════════════════════════════════════════════════════════════════════════════════════════════════════════════╣")
 
-    player_name = input("What is your name... as you step into the unknown?: ").strip()
-    players.append(player_name)
-    print(f"✅ Player '{player_name}' added.")
-    print(f"🕵️ Hello {player_name}, now we enter a game of truth and lies."
-          f"\nTwo truths, one lie... but only one chance to uncover it.")
+    total_points = game_logic.play_game()
+
+    # INSERT LEADERBOARD STUFF
+
+    clear_screen()
+    display_game_over_screen(total_points)
+
+    input("Press Enter to return to main menu. ")
 
 
-
-
-
-
-def reset_leaderboard(leaderboard):
+def reset_leaderboard():
     """Clears the leaderboard."""
+    print(f"{GREEN}╔═══════════════════════════════════════════════════════════════════════════════════════════════════════════════╗")
     confirm = input("Are you sure you want to reset the leaderboard? (yes/no): ")
-    if confirm == "yes":
-        leaderboard.clear()
-        print("Leaderboard has been reset.")
+    print("╚═══════════════════════════════════════════════════════════════════════════════════════════════════════════════╝")
+    print(f"{RESET}")
+
+    if confirm.lower() == "yes":
+        reset_leaderboard_data()
+        print(f"{GREEN}╔═══════════════════════════════════════════════════════════════════════════════════════════════════════════════╗")
+        print("Leaderboard has been reset.{RESET}")
+        print("╚═══════════════════════════════════════════════════════════════════════════════════════════════════════════════╝")
+        print(f"{RESET}")
 
 
 def quit_game():
     """Exits the game."""
-    print("❌The game has been quit. The truth remains, waiting until we meet again. ❌")
+    print("╔═══════════════════════════════════════════════════════════════════════════════════════════════════════════════╗")
+    print("❌The game has been quit. The truth remains, waiting until we meet again.❌")
+    print("╚═══════════════════════════════════════════════════════════════════════════════════════════════════════════════╝")
+
     sys.exit()
 
+    """
+    from moviepy.editor import VideoFileClsip
 
-def print_menu():
+    # Funktion, um das Video im Vollbildmodus anzuzeigen
+    def zeige_video_vollbild(screen, video_pfad):
+        # Lade das Video mit moviepy
+        clip = VideoFileClip(video_pfad)
+
+        # Bildschirmgröße ermitteln
+        screen_size = screen.get_size()
+
+        # Video in passende Größe skalieren
+        clip_resized = clip.resize(newsize=screen_size)  # Skaliert das Video auf die Bildschirmgröße
+
+        # Video-Frames durchlaufen und anzeigen
+        for frame in clip_resized.iter_frames(fps=24, dtype="uint8"):
+            # Wandle das Frame in ein Pygame Surface um
+            frame_surface = pygame.surfarray.make_surface(np.transpose(frame, (1, 0, 2)))
+
+            # Anzeige des Frames
+            screen.blit(frame_surface, (0, 0))
+            pygame.display.flip()
+
+            # Event-Loop zum Schließen des Fensters
+            for event in pygame.event.get():
+                if event.type == pygame.QUIT:
+                    pygame.quit()
+                    return
+
+    # Hauptprogramm
+    def main():
+        pygame.init()
+
+        # Bildschirm im Vollbildmodus öffnen
+        screen = pygame.display.set_mode((0, 0), pygame.FULLSCREEN)
+        pygame.display.set_caption("Vollbild Video")
+
+        # Pfad zum Video (MP4)
+        video_pfad = "data/ezgif-8e3264382fd934.mp4"  # Passe den Pfad an
+
+        # Video im Vollbildmodus anzeigen
+        zeige_video_vollbild(screen, video_pfad)
+
+        # Pygame beenden
+        pygame.quit()
+
+    if __name__ == "__main__":
+        main()
+
+    sys.exit()
+
+    """
+
+def print_main_menu():
     """Displays the menu options to the user."""
-    print("----------------------------------------------------------------------------------------")
-    print("🕵️‍♀️Welcome to Beyond Belief: Fact or Fiction - The game where knowledge meets instinct🕵️‍♀️")
-    print("Three statements. One is a lie. Will your instincts guide you?")
-    print("Behind every fact lies a shadow. Find the one that doesn't belong.")
-
-    print("\nMenu:")
-    print("1. New Game")
-    print("2. Show Leaderboard")
-    print("3. Reset Leaderboard")
-    print("4. Quit Game")
-    print()
-
-
-def process_user_choice():
-    """Processes the user's menu selection."""
-    while True:
-        print_menu()
-        choice = input("Enter choice (1-4): ")
-        print()
-
-        if choice == '1':
-            new_game()
-        elif choice == '2':
-            show_leaderboard()
-        elif choice == '3':
-            reset_leaderboard()
-        elif choice == '4':
-            quit_game()
-
-        else:
-            print("Invalid choice.")
-
-        print()
-        input("Press Enter to continue ")
-        print()
+    print(f"{GREEN}╔═══════════════════════════════════════════════════════════════════════════════════════════════════════════════╗")
+    print("║ ▄▄▄▄     ▓█████▓  ██   ██▓  ▒█████▀    ███▄   ██   ▓█████▄    ▄▄▄▄   ▓█████   ██▓      ██▓  ▓██████  ████████ ║")
+    print("║ ▓█████▄   ▓█      ▒██  ██▒  ▒█▒   ██▒  ██ ▀█  ██   ▒██▀ ██▌  ▓█████▄ ▓█   ▀  ▓██▒      ▓██  ▒▓█      ▓██      ║")
+    print("║ ▒██▒ ▄█  █▒███     ▒██ ██░  ▒█░   ██▒  ██  ▀█ █▒   ██    █▌  ▒██▒ ▄█ █▒███   ▒██░      ▒██  ▒▒████   ▒██████  ║")
+    print("║ ▒██░█▀    ▒▓█  ▄  ░ ▐██▓▒   ██   ██░▓  █▒   ▐▌█▒   ▓█▄   █▌  ▒██░█▀  ▒▓█  ▄  ▒██░      ░██  ░▒▓█  ▄  ░██▒  ░  ║")
+    print("║ ░▓█  ▀█  ▓░▒████▒ ░ ██▒░    ████▓▒░▒█  █░    ██  ░ ▒████▓    ░▓█  ▀█ ▓░▒████▒ ░██████▒ ░██░ ░▒█████  ▒██░     ║")
+    print("║ ░▒▓███▀  ▒░░ ▒░ ░  ██▒▒   ░           ▒░                     ░▒▓███▀ ▒░░ ▒░ ░░ ▒░▓  ░░▓  ░░ ▒░ ░ ▒ ░          ║")
+    print("║ ▒░▒   ░    ░ ░  ░  ░▒░    ▒    ░ ░    ░ ▒░ ░ ▒    ░▒     ░  ░ ░  ░░ ░ ▒  ░ ▒ ░ ░ ░  ░ ░                       ║")
+    print("║ ░    ░      ░   ▒ ▒ ░░  ░   ░ ▒     ░   ░ ░  ░ ░  ░   ░      ░    ░     ░ ░    ▒ ░   ░    ░ ░                 ║")
+    print("║ ░           ░  ░░ ░         ░ ░           ░    ░      ░           ░  ░    ░  ░ ░     ░  ░                     ║")
+    print("╚═══════════════════════════════════════════════════════════════════════════════════════════════════════════════╝")
+    print("╔═══════════════════════════════════════════════════════════════════════════════════════════════════════════════╗")
+    print("║ Welcome to Beyond Belief: Fact or Fiction - The game where knowledge meets instinct                           ║")
+    print("╠═══════════════════════════════════════════════════════════════════════════════════════════════════════════════╣")
+    print("║ Three statements. One is a lie. Will your instincts guide you?                                                ║")
+    print("║ Behind every fact lies a shadow. Find the one that doesn't belong.                                            ║")
+    print("╠═══════════════════════════════════════════════════════════════════════════════════════════════════════════════╣")
+    print("║ Menu:                                                                                                         ║")
+    print("║   1. Play Game                                                                                                ║")
+    print("║   2. Show Leaderboard                                                                                         ║")
+    print("║   3. Reset Leaderboard                                                                                        ║")
+    print("║   4. Quit Game                                                                                                ║")
+    print("╚═══════════════════════════════════════════════════════════════════════════════════════════════════════════════╝")
+    print(f"{RESET}")
 
 
-def main():
-    """Main function that starts the program."""
-    process_user_choice()
+
+def evaluate_menu_input(user_input):
+    valid_choices = {'1', '2', '3', '4'}
+    user_input = user_input.strip()
+
+    if user_input in valid_choices:
+        return int(user_input)
+    else:
+        raise ValueError("Invalid menu option. Please enter a number between 1 and 4.")
 
 
-if __name__ == "__main__":
-    main()
+def display_game_over_screen(points_count):
+    ascii_art = f"""{RED}
+╔═══════════════════════════════════════════════════════════════════════════════════════════════════════════════╗
+║  ▄█████    ▄▄▄        ███▄ ▄███▓ ▓█████     ▒█████   ██▒   █▓▓ █████  ███▀██▄                                 ║
+║  ██▒  █▒  ▒████▄     ▓██▒▀█▀ ██▒ ▓█   ▀    ▒██▒  ██▒ ▓██░   █▒ ▓█   ▀ ▓██  ▒██▒                               ║
+║  ███░▄▄▄  ▒██  ▀█▄   ▓██    ▓██░ ▒███      ▒██░  ██▒ ▓██  █▒░ ▒███    ▓██ ░▄█▒                                ║
+║  ███  ██▓ ░██▄▄▄▄██  ▒██    ▒██  ▒▓█  ▄    ▒██   ██░  ▒██ █░ ░▒▓█  ▄  ▒██▀▀█▄                                 ║
+║  ░▒████▀▒  ▓█   ▓██ ▒▒██▒   ░██▒ ░▒████▒   ░ ████▓▒░   ▒██░  ░▒████▒░ ██▓  ▒█▒                                ║
+║   ░▒    ▒  ▒▒   ▓▒█ ░░ ▒░   ░  ░░ ░ ▒░ ░   ░ ▒░▒░▒░    ░▐░   ░░ ▒░ ░░  ▒▓ ░▒▓░                                ║
+║    ░    ░   ▒   ▒▒  ░░  ░      ░ ░  ░  ░     ░ ▒ ▒░    ░ ░░   ░ ░  ░   ░▒ ░ ▒░                                ║
+║  ░ ░    ░   ░   ▒    ░      ░       ░      ░ ░ ░ ▒       ░░     ░      ░░   ░                                 ║
+║      ░       ░   ░       ░       ░  ░       ░ ░        ░     ░  ░   ░                                         ║
+║                                                        ░                                                      ║
+╚═══════════════════════════════════════════════════════════════════════════════════════════════════════════════╝                                                         
+    {RESET}"""
+    print(ascii_art)
+    print(f"{GREEN}╔═══════════════════════════════════════════════════════════════════════════════════════════════════════════════╗")
+    print(f"║ Your final score: {points_count}                                                                                          ║")
+    print("╚═══════════════════════════════════════════════════════════════════════════════════════════════════════════════╝")

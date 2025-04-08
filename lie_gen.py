@@ -133,6 +133,14 @@ def flip_meaning(text):
     for word in words:
         if word.lower() == "is":
             new_words.append("is not")
+        elif word.lower() == "are":
+            new_words.append("are not")
+        elif word.lower() == "was":
+            new_words.append("was not")
+        elif word.lower() == "were":
+            new_words.append("were not")
+        elif word.lower() == "will":
+            new_words.append("will not")
         else:
             new_words.append(word)
     return " ".join(new_words)
@@ -156,7 +164,3 @@ def generate_lie(true_fact):
 
     except Exception as e:
         print(f"An error has occurred: {e}")
-
-
-if __name__ == "__main__":
-    main()

@@ -4,12 +4,22 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="b9f75532-8cc1-43b1-abc8-22557e4928fa" name="Changes" comment="">
+    <list default="true" id="b9f75532-8cc1-43b1-abc8-22557e4928fa" name="Changes" comment="adding some sentence filtering">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/leaderboard.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/leaderboard.py" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/game_logic.py" beforeDir="false" afterPath="$PROJECT_DIR$/game_logic.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lie_gen.py" beforeDir="false" afterPath="$PROJECT_DIR$/lie_gen.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/menu.py" beforeDir="false" afterPath="$PROJECT_DIR$/menu.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/wiki_api.py" beforeDir="false" afterPath="$PROJECT_DIR$/wiki_api.py" afterDir="false" />
     </list>
+    <list id="1384e97d-2cf7-4302-87af-c107c57682fd" name="Changes by alinamarcus" comment="">
+      <change beforePath="$PROJECT_DIR$/lie_gen.py" beforeDir="false" afterPath="$PROJECT_DIR$/lie_gen.py" afterDir="false" />
+    </list>
+    <list id="00a0c9e4-7197-4acb-a9f3-34f7a6e5227f" name="Changes by joshuavaeth" comment="">
+      <change beforePath="$PROJECT_DIR$/menu.py" beforeDir="false" afterPath="$PROJECT_DIR$/menu.py" afterDir="false" />
+    </list>
+    <list id="92bb5e98-6ce1-4831-ba17-a78878e6795d" name="Changes by v.kuppuswamy" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -25,20 +35,54 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
-  <component name="GitHubPullRequestSearchHistory"><![CDATA[{
-  "lastFilter": {
-    "state": "OPEN",
-    "assignee": "AndreWeigel"
+  <component name="GitHubPullRequestSearchHistory">{
+  &quot;lastFilter&quot;: {
+    &quot;state&quot;: &quot;OPEN&quot;,
+    &quot;assignee&quot;: &quot;AndreWeigel&quot;
   }
-}]]></component>
-  <component name="GithubPullRequestsUISettings"><![CDATA[{
-  "selectedUrlAndAccountId": {
-    "url": "https://github.com/AndreWeigel/beyond_belief_game.git",
-    "accountId": "66a16ec3-e12d-449a-9f80-69804d409d15"
+}</component>
+  <component name="GithubPullRequestsUISettings">{
+  &quot;selectedUrlAndAccountId&quot;: {
+    &quot;url&quot;: &quot;https://github.com/AndreWeigel/beyond_belief_game.git&quot;,
+    &quot;accountId&quot;: &quot;66a16ec3-e12d-449a-9f80-69804d409d15&quot;
   }
-}]]></component>
+}</component>
   <component name="HighlightingSettingsPerFile">
     <setting file="file://$PROJECT_DIR$/test.py" root0="SKIP_HIGHLIGHTING" />
+  </component>
+  <component name="LLMProjectSettings">
+    <option name="turned_on" value="false" />
+  </component>
+  <component name="LineStatusTrackerManager">
+    <file path="$PROJECT_DIR$/menu.py">
+      <ranges>
+        <range start1="0" end1="1" start2="0" end2="1" changelist="b9f75532-8cc1-43b1-abc8-22557e4928fa" />
+        <range start1="2" end1="3" start2="2" end2="9" changelist="b9f75532-8cc1-43b1-abc8-22557e4928fa" />
+        <range start1="4" end1="5" start2="10" end2="10" changelist="b9f75532-8cc1-43b1-abc8-22557e4928fa" />
+        <range start1="7" end1="7" start2="12" end2="16" changelist="b9f75532-8cc1-43b1-abc8-22557e4928fa" />
+        <range start1="8" end1="9" start2="17" end2="81" changelist="b9f75532-8cc1-43b1-abc8-22557e4928fa" />
+        <range start1="10" end1="10" start2="82" end2="83" changelist="b9f75532-8cc1-43b1-abc8-22557e4928fa" />
+        <range start1="11" end1="12" start2="84" end2="85" changelist="b9f75532-8cc1-43b1-abc8-22557e4928fa" />
+        <range start1="14" end1="15" start2="87" end2="89" changelist="b9f75532-8cc1-43b1-abc8-22557e4928fa" />
+        <range start1="16" end1="16" start2="90" end2="96" changelist="b9f75532-8cc1-43b1-abc8-22557e4928fa" />
+        <range start1="17" end1="18" start2="97" end2="103" changelist="b9f75532-8cc1-43b1-abc8-22557e4928fa" />
+        <range start1="19" end1="20" start2="104" end2="109" changelist="b9f75532-8cc1-43b1-abc8-22557e4928fa" />
+        <range start1="21" end1="26" start2="110" end2="111" changelist="b9f75532-8cc1-43b1-abc8-22557e4928fa" />
+        <range start1="27" end1="28" start2="112" end2="116" changelist="b9f75532-8cc1-43b1-abc8-22557e4928fa" />
+        <range start1="29" end1="29" start2="117" end2="118" changelist="b9f75532-8cc1-43b1-abc8-22557e4928fa" />
+        <range start1="31" end1="33" start2="120" end2="121" changelist="b9f75532-8cc1-43b1-abc8-22557e4928fa" />
+        <range start1="34" end1="34" start2="122" end2="123" changelist="b9f75532-8cc1-43b1-abc8-22557e4928fa" />
+        <range start1="35" end1="38" start2="124" end2="133" changelist="b9f75532-8cc1-43b1-abc8-22557e4928fa" />
+        <range start1="42" end1="43" start2="137" end2="192" changelist="b9f75532-8cc1-43b1-abc8-22557e4928fa" />
+        <range start1="44" end1="44" start2="193" end2="195" changelist="b9f75532-8cc1-43b1-abc8-22557e4928fa" />
+        <range start1="45" end1="47" start2="196" end2="197" changelist="00a0c9e4-7197-4acb-a9f3-34f7a6e5227f" />
+        <range start1="48" end1="52" start2="198" end2="222" changelist="b9f75532-8cc1-43b1-abc8-22557e4928fa" />
+        <range start1="53" end1="59" start2="223" end2="223" changelist="b9f75532-8cc1-43b1-abc8-22557e4928fa" />
+        <range start1="61" end1="67" start2="225" end2="228" changelist="00a0c9e4-7197-4acb-a9f3-34f7a6e5227f" />
+        <range start1="68" end1="83" start2="229" end2="233" changelist="00a0c9e4-7197-4acb-a9f3-34f7a6e5227f" />
+        <range start1="85" end1="92" start2="235" end2="254" changelist="b9f75532-8cc1-43b1-abc8-22557e4928fa" />
+      </ranges>
+    </file>
   </component>
   <component name="ProblemsViewState">
     <option name="selectedTabId" value="CurrentFile" />
@@ -54,33 +98,38 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "Python.game_logic.executor": "Run",
-    "Python.leaderboard.executor": "Run",
-    "Python.lie_gen.executor": "Run",
-    "Python.menu.executor": "Run",
-    "Python.scratch.pyx.executor": "Run",
-    "Python.test.executor": "Run",
-    "Python.wiki_api.executor": "Run",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "RunOnceActivity.git.unshallow": "true",
-    "git-widget-placeholder": "master",
-    "last_opened_file_path": "/Users/andreweigel/PycharmProjects/beyond_belief_game",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "settings.editor.selected.configurable": "CodeWithMe",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;Python tests.Doctests in punkt.executor&quot;: &quot;Run&quot;,
+    &quot;Python.game_logic.executor&quot;: &quot;Run&quot;,
+    &quot;Python.game_over.executor&quot;: &quot;Run&quot;,
+    &quot;Python.leaderboard.executor&quot;: &quot;Run&quot;,
+    &quot;Python.lie_gen.executor&quot;: &quot;Run&quot;,
+    &quot;Python.main.executor&quot;: &quot;Run&quot;,
+    &quot;Python.menu.executor&quot;: &quot;Run&quot;,
+    &quot;Python.music_test.executor&quot;: &quot;Run&quot;,
+    &quot;Python.scratch.pyx.executor&quot;: &quot;Run&quot;,
+    &quot;Python.test.executor&quot;: &quot;Run&quot;,
+    &quot;Python.wiki_api.executor&quot;: &quot;Run&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
+    &quot;last_opened_file_path&quot;: &quot;/Users/andreweigel/Library/Mobile Documents/com~apple~CloudDocs/beyond_belief_game&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;CodeWithMe&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   },
-  "keyToStringList": {
-    "com.intellij.ide.scratch.ScratchImplUtil$2/New Scratch File": [
-      "Cython"
+  &quot;keyToStringList&quot;: {
+    &quot;com.intellij.ide.scratch.ScratchImplUtil$2/New Scratch File&quot;: [
+      &quot;Python&quot;,
+      &quot;Cython&quot;
     ]
   }
-}]]></component>
+}</component>
   <component name="PyConsoleOptionsProvider">
     <option name="myPythonConsoleState">
       <console-settings>
@@ -111,20 +160,43 @@
       <option name="presentableId" value="Default" />
       <updated>1744023715807</updated>
       <workItem from="1744023716868" duration="72000" />
-      <workItem from="1744023814329" duration="25842000" />
+      <workItem from="1744023814329" duration="39063000" />
+      <workItem from="1744112464588" duration="444000" />
+      <workItem from="1744113873617" duration="326000" />
+      <workItem from="1744114609429" duration="15638000" />
+      <workItem from="1744138123081" duration="197000" />
+      <workItem from="1744138329525" duration="696000" />
+      <workItem from="1744139111576" duration="1401000" />
     </task>
+    <task id="LOCAL-00001" summary="adding some sentence filtering">
+      <option name="closed" value="true" />
+      <created>1744054197607</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1744054197607</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
   </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="adding some sentence filtering" />
+    <option name="LAST_COMMIT_MESSAGE" value="adding some sentence filtering" />
+  </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
-    <SUITE FILE_PATH="coverage/beyond_belief_game$menu.coverage" NAME="menu Coverage Results" MODIFIED="1744039653867" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
-    <SUITE FILE_PATH="coverage/beyond_belief_game$test.coverage" NAME="test Coverage Results" MODIFIED="1744042148118" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/beyond_belief_game$game_over.coverage" NAME="game_over Coverage Results" MODIFIED="1744117037267" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/beyond_belief_game$test.coverage" NAME="test Coverage Results" MODIFIED="1744116162808" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/beyond_belief_game$Doctests_in_punkt.coverage" NAME="Doctests in punkt Coverage Results" MODIFIED="1744121996112" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$USER_HOME$/PycharmProjects/beyond_belief_game/.venv/lib/python3.13/site-packages/nltk/tokenize" />
+    <SUITE FILE_PATH="coverage/beyond_belief_game$menu.coverage" NAME="menu Coverage Results" MODIFIED="1744138432616" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/beyond_belief_game$music_test.coverage" NAME="music_test Coverage Results" MODIFIED="1744120665643" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/beyond_belief_game$scratch_pyx.coverage" NAME="scratch.pyx Coverage Results" MODIFIED="1744034550164" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$APPLICATION_CONFIG_DIR$/scratches" />
-    <SUITE FILE_PATH="coverage/beyond_belief_game$game_logic.coverage" NAME="game_logic Coverage Results" MODIFIED="1744046064402" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/beyond_belief_game$game_logic.coverage" NAME="game_logic Coverage Results" MODIFIED="1744126901918" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/beyond_belief_game$main.coverage" NAME="main Coverage Results" MODIFIED="1744140214592" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/beyond_belief_game$leaderboard.coverage" NAME="leaderboard Coverage Results" MODIFIED="1744040586857" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/data" />
-    <SUITE FILE_PATH="coverage/beyond_belief_game$wiki_api.coverage" NAME="wiki_api Coverage Results" MODIFIED="1744054025409" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
-    <SUITE FILE_PATH="coverage/beyond_belief_game$lie_gen.coverage" NAME="lie_gen Coverage Results" MODIFIED="1744037163437" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/beyond_belief_game$wiki_api.coverage" NAME="wiki_api Coverage Results" MODIFIED="1744099506675" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/beyond_belief_game$lie_gen.coverage" NAME="lie_gen Coverage Results" MODIFIED="1744099547365" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
   </component>
 </project>
